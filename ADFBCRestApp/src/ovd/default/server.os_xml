@@ -1,0 +1,91 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<server schvers="303" version="0" xmlns="http://xmlns.oracle.com/iam/management/ovd/config/server" xmlns:server="http://www.w3.org/2001/XMLSchema-instance">
+   <type>LibraryOVD</type>
+   <version>12.2.1.0.0</version>
+   <name>default</name>
+   <listeners/>
+   <schema check="true">
+      <location>schema.core.xml</location>
+      <location>schema.cosine.xml</location>
+      <location>schema.inetorgperson.xml</location>
+      <location>schema.nis.xml</location>
+      <location>schema.dyngroup.xml</location>
+      <location>schema.java.xml</location>
+      <location>schema.oim.xml</location>
+      <location>schema.user.xml</location>
+   </schema>
+   <adapters>adapters.os_xml</adapters>
+   <ruleset>ruleset.os_xml</ruleset>
+   <acls check="false"/>
+   <rootUser enabled="false"/>
+   <replicas enabled="false" interval="0" location="">
+      <changelog active="false">
+         <suffix/>
+         <file>data/changelog</file>
+         <replicationFile/>
+      </changelog>
+   </replicas>
+   <views version="0"/>
+   <quota active="false">
+      <exemptip>
+         <address>127.0.0.1</address>
+      </exemptip>
+      <exemptsubject>
+         <subject>cn=orcladmin</subject>
+      </exemptsubject>
+      <ratePeriod>30000</ratePeriod>
+      <max>
+         <opspercon>0</opspercon>
+         <connections>0</connections>
+         <consPerSubject>0</consPerSubject>
+         <consPerIp>0</consPerIp>
+         <inactiveConnectionTimeout>0</inactiveConnectionTimeout>
+      </max>
+   </quota>
+   <tls>
+      <keystore>keystores/adapters.jks</keystore>
+      <pass/>
+      <trustStore>keystores/adapters.jks</trustStore>
+      <trustStorePassword/>
+   </tls>
+   <rootSuffix/>
+   <pluginChains xmlns="http://xmlns.oracle.com/iam/management/ovd/config/plugins">
+      <plugins>
+         <plugin>
+            <name>DMSMetrics</name>
+            <class>oracle.ods.virtualization.engine.chain.plugins.DMSMetrics.MonitorPerformance</class>
+            <initParams/>
+         </plugin>
+         <plugin>
+            <name>genericmapper</name>
+            <class>oracle.ods.virtualization.engine.chain.plugins.genericmapping.GenericMapper</class>
+            <initParams/>
+         </plugin>
+         <plugin>
+            <name>mlsfilter</name>
+            <class>oracle.ods.virtualization.engine.chain.plugins.mlsfilter.MlsFilter</class>
+            <initParams/>
+         </plugin>
+         <plugin>
+            <name>uniqueentry</name>
+            <class>oracle.ods.virtualization.engine.chain.plugins.uniqueentry.UniqueEntryPlugin</class>
+            <initParams>
+               <param name="uniqueattribute" value="usernameattr"/>
+               <param name="objectclass" value="person"/>
+            </initParams>
+         </plugin>
+      </plugins>
+      <default>
+         <plugin name="DMSMetrics"/>
+         <plugin name="genericmapper"/>
+         <plugin name="mlsfilter"/>
+         <plugin name="uniqueentry"/>
+      </default>
+   </pluginChains>
+   <exitOnFatal>false</exitOnFatal>
+   <searchLimit>
+      <anonymous>1000</anonymous>
+      <authenticated>10000</authenticated>
+   </searchLimit>
+   <persistentSearch>false</persistentSearch>
+</server>

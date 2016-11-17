@@ -1,0 +1,77 @@
+<div class="oj-flex oj-header-border">
+    <div class="oj-flex-item">
+        <div class="oj-sm-float-start" id='buttons-container'>
+            <button id="btnBack" data-bind="click: goBack, 
+                                        ojComponent: {
+                                            component:'ojButton', 
+                                            icons: {start:'oj-fwk-icon-caret-start oj-fwk-icon'}, 
+                                            label: 'Back'
+                                        }">
+            </button>  
+        </div>
+        <div class="oj-sm-float-end" id='buttons-container'>
+            <button id="buttonIcon2"  data-bind="click: saveCustomer, 
+                                        ojComponent: {
+                                            component:'ojButton', 
+                                            icons: {start:'oj-fwk-icon oj-fwk-icon-checkmark'}, 
+                                            label: 'Save'
+                                        }">
+            </button>
+        </div>  
+    </div>
+</div>
+<div id="form-container">
+    <div class="oj-form-layout" data-bind="with: customerModel">
+        <h1>Edit Customer</h1>   
+        <div class="oj-form oj-sm-odd-cols-12 oj-md-odd-cols-5 oj-md-labels-inline">
+            <div class="oj-flex">
+                <div class="oj-flex-item">
+                    <label for="inputcontrol">First Name</label>
+                </div>
+                <div class="oj-flex-item">
+                    <input id="inputcontrol" data-bind="ojComponent: {component: 'ojInputText', value: attributes.FirstName}">
+                </div>
+            </div>
+            <div class="oj-flex">
+              <div class="oj-flex-item">
+                    <label for="inputcontrol">Last Name</label>
+                </div>
+                <div class="oj-flex-item">
+                    <input id="inputcontrol" data-bind="ojComponent: {component: 'ojInputText', value: attributes.LastName}">
+                </div>
+            </div>
+            <div class="oj-flex">
+              <div class="oj-flex-item">
+                    <label for="inputcontrol">Email</label>
+                </div>
+                <div class="oj-flex-item">
+                    <input id="inputcontrol" data-bind="ojComponent: {component: 'ojInputText', value: attributes.Email}">
+                </div>
+            </div>
+            <div class="oj-flex">
+              <div class="oj-flex-item">
+                    <label for="inputcontrol">Salary</label>
+                </div>
+                <div class="oj-flex-item">
+                    <input id="inputcontrol" data-bind="ojComponent: {component: 'ojInputNumber', value: attributes.Salary}">
+                </div>
+            </div>
+            <div class="oj-flex">
+              <div class="oj-flex-item">
+                    <label for="inputcontrol">Min Salary</label>
+                </div>
+                <div class="oj-flex-item">
+                    <input id="inputcontrol" data-bind="ojComponent: {component: 'ojInputText', readOnly: true, value: attributes.MinSalary}">
+                </div>
+            </div>
+            <div class="oj-flex">
+              <div class="oj-flex-item">
+                    <label for="inputcontrol">Max Salary</label>
+                </div>
+                <div class="oj-flex-item">
+                    <input id="inputcontrol" data-bind="ojComponent: {component: 'ojInputText', readOnly: true, value: attributes.MaxSalary}">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

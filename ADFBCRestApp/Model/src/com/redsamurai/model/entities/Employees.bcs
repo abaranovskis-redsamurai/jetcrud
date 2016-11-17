@@ -1,0 +1,53 @@
+//Groovy Scripts for com.redsamurai.model.entities.Employees
+
+package com.redsamurai.model.entities
+
+import oracle.jbo.script.annotation.TransientValueExpression;
+import oracle.jbo.script.annotation.MessageParameterExpression;
+import oracle.jbo.script.annotation.ValidatorExpression;
+import oracle.jbo.script.annotation.ValidatorConditionExpression;
+
+@TransientValueExpression(attributeName="EmployeeId")
+def EmployeeId_ExpressionScript_Expression()
+{
+(new oracle.jbo.server.SequenceImpl("EMPLOYEES_SEQ",adf.object.getDBTransaction())).getSequenceNumber()
+}
+
+
+@MessageParameterExpression(validatorName="SalaryRule0", name="ResExpressions_maxSal", attributeName="Salary")
+def Salary_SalaryRule0_ResExpressions_maxSal_MessageParameterValues()
+{
+Jobs.MaxSalary
+}
+
+
+@MessageParameterExpression(validatorName="SalaryRule0", name="ResExpressions_minSal", attributeName="Salary")
+def Salary_SalaryRule0_ResExpressions_minSal_MessageParameterValues()
+{
+Jobs.MinSalary
+}
+
+
+@ValidatorExpression(name="SalaryRule0", attributeName="Salary")
+def Salary_SalaryRule0_ValidationRuleScript_ValidationRule()
+{
+if(newValue < Jobs.MinSalary || newValue > Jobs.MaxSalary) {
+  return false;
+}
+return true;
+}
+
+
+@ValidatorExpression(name="HireDateRule0", attributeName="HireDate")
+def HireDate_HireDateRule0_ValidationRuleScript_ValidationRule()
+{
+adf.currentDate
+}
+
+
+@ValidatorConditionExpression(name="SalaryRule0", attributeName="Salary")
+def Salary_SalaryRule0_OnConditionScript_OnCondition()
+{
+Jobs != null
+}
+

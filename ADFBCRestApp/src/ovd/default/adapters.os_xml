@@ -1,0 +1,58 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<adapters schvers="303" version="0" xmlns="http://www.octetstring.com/schemas/Adapters" xmlns:adapters="http://www.w3.org/2001/XMLSchema-instance">
+   <ghost id="idstore.xml" version="0">
+      <root>dc=jazn.com</root>
+      <active>true</active>
+      <serverType>XML</serverType>
+      <routing>
+         <critical>true</critical>
+         <priority>50</priority>
+         <inclusionFilter/>
+         <exclusionFilter/>
+         <plugin/>
+         <retrieve/>
+         <store/>
+         <visible>Yes</visible>
+         <levels>-1</levels>
+         <bind>true</bind>
+         <bind-adapters/>
+         <views/>
+         <dnpattern/>
+      </routing>
+      <pluginChains xmlns="http://xmlns.oracle.com/iam/management/ovd/config/plugins">
+         <plugins>
+            <plugin>
+               <name>DMSMetrics</name>
+               <class>oracle.ods.virtualization.engine.chain.plugins.DMSMetrics.MonitorPerformance</class>
+               <initParams/>
+            </plugin>
+            <plugin>
+               <name>NestedGroupMembership</name>
+               <class>oracle.ods.virtualization.engine.chain.plugins.groupmembership.NestedGroupMembership</class>
+               <initParams>
+                  <param name="nestedlevels" value="0"/>
+                  <param name="usersearchbase" value="cn=users,dc=jazn.com"/>
+                  <param name="groupsearchbase" value="cn=groups,dc=jazn.com"/>
+                  <param name="groupmemberattribute" value="uniquemember"/>
+               </initParams>
+            </plugin>
+            <plugin>
+               <name>JaznXmlProvider</name>
+               <class>oracle.ods.virtualization.engine.chain.plugins.jazn.XmlPlugin</class>
+               <initParams>
+                  <param name="xmllocation" value="/Users/andrejusbaranovskis/jdeveloper/mywork/blog/ADFBCRestApp/src/META-INF/jazn-data.xml"/>
+                  <param name="realm" value="jazn.com"/>
+                  <param name="pwdencoding" value="OBFUSCATE"/>
+                  <param name="userbase" value="cn=users,dc=jazn.com"/>
+                  <param name="groupbase" value="cn=groups,dc=jazn.com"/>
+               </initParams>
+            </plugin>
+         </plugins>
+         <default>
+            <plugin name="DMSMetrics"/>
+            <plugin name="NestedGroupMembership"/>
+            <plugin name="JaznXmlProvider"/>
+         </default>
+      </pluginChains>
+   </ghost>
+</adapters>

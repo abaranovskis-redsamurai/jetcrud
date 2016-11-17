@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE JboProject SYSTEM "jbo_03_01.dtd">
+<!---->
+<JboProject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="Model"
+  Version="12.2.1.0.31"
+  SeparateXMLFiles="true"
+  PackageName="com.redsamurai.model">
+  <DesignTime>
+    <Attr Name="_DTExpressionTypeChecking" Value="true"/>
+    <Attr Name="_jbo.TypeMapEntries" Value="OracleApps"/>
+    <Attr Name="_jprName" Value="../../../../Model.jpr"/>
+    <Attr Name="_NamedConnection" Value="HrDS"/>
+    <Attr Name="_appModuleNames0" Value="com.redsamurai.model.services.HrModule"/>
+  </DesignTime>
+  <Containee
+    Name="assocs"
+    PackageName="com.redsamurai.model.entities.assocs"
+    ObjectType="JboPackage">
+    <DesignTime>
+      <Attr Name="_AS" Value="true"/>
+    </DesignTime>
+  </Containee>
+  <Containee
+    Name="entities"
+    PackageName="com.redsamurai.model.entities"
+    ObjectType="JboPackage">
+    <DesignTime>
+      <Attr Name="_EO" Value="true"/>
+    </DesignTime>
+  </Containee>
+  <Containee
+    Name="services"
+    PackageName="com.redsamurai.model.services"
+    ObjectType="JboPackage">
+    <DesignTime>
+      <Attr Name="_AM" Value="true"/>
+    </DesignTime>
+  </Containee>
+  <Containee
+    Name="lovs"
+    PackageName="com.redsamurai.model.views.lovs"
+    ObjectType="JboPackage">
+    <DesignTime>
+      <Attr Name="_VO" Value="true"/>
+    </DesignTime>
+  </Containee>
+  <Containee
+    Name="views"
+    PackageName="com.redsamurai.model.views"
+    ObjectType="JboPackage">
+    <DesignTime>
+      <Attr Name="_VO" Value="true"/>
+    </DesignTime>
+  </Containee>
+</JboProject>

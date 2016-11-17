@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.0.31" id="HrModule_EmployeesViewResources"
+                Package="com.redsamurai.model.services.rest.v1" usageMode="RESTClient">
+    <parameters/>
+    <executables>
+        <variableIterator id="variables"/>
+        <iterator Binds="EmployeesView1" RangeSize="5" DataControl="HrModuleDataControl" id="EmployeesView1Iter"/>
+    </executables>
+    <bindings>
+        <tree IterBinding="EmployeesView1Iter" id="Employees" AccessorFolder="Always">
+            <nodeDefinition DefName="com.redsamurai.model.views.EmployeesView"
+                            Name="com.redsamurai.model.views.EmployeesView"></nodeDefinition>
+        </tree>
+        <methodAction id="calculateEmployees" RequiresUpdateModel="true" Action="invokeMethod" MethodName="calculateEmployees"
+                      IsViewObjectMethod="true" DataControl="HrModuleDataControl"
+                      InstanceName="data.HrModuleDataControl.EmployeesView1"
+                      ReturnName="data.HrModuleDataControl.methodResults.calculateEmployees_HrModuleDataControl_EmployeesView1_calculateEmployees_result"
+                      IterBinding="EmployeesView1Iter">
+            <NamedData NDName="firstName" NDType="java.lang.String"/>
+            <NamedData NDName="lastName" NDType="java.lang.String"/>
+        </methodAction>
+        <methodAction id="login" RequiresUpdateModel="true" Action="invokeMethod" MethodName="login"
+                      IsViewObjectMethod="true" DataControl="HrModuleDataControl"
+                      InstanceName="data.HrModuleDataControl.EmployeesView1"
+                      ReturnName="data.HrModuleDataControl.methodResults.login_HrModuleDataControl_EmployeesView1_login_result"
+                      IterBinding="EmployeesView1Iter">
+        </methodAction>
+        <tree IterBinding="EmployeesView1Iter" id="EmployeesJobs" AccessorFolder="Always">
+            <nodeDefinition DefName="com.redsamurai.model.views.EmployeesView"
+                            Name="com.redsamurai.model.views.EmployeesView"/>
+        </tree>
+    </bindings>
+</pageDefinition>

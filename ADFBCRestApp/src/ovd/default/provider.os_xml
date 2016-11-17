@@ -1,0 +1,125 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<providers xmlns="http://xmlns.oracle.com/iam/management/ovd/config/providers">
+   <credentialStore>
+      <provider name="CSFCredentialStore">
+         <configClass>oracle.ods.virtualization.config.CSFCredentialStoreConfig</configClass>
+         <properties>
+            <property name="enabled" value="false"/>
+            <property name="contextName" value="default"/>
+            <property name="mapName" value="OVD_$APP_NAME$"/>
+         </properties>
+      </provider>
+   </credentialStore>
+   <passwordScheme>
+      <provider name="SHAPasswordScheme">
+         <configClass>oracle.ods.virtualization.config.SHAMD5PasswordSchemeConfig</configClass>
+         <properties>
+            <property name="enabled" value="true"/>
+            <property name="schemeName" value="SSHA"/>
+         </properties>
+      </provider>
+      <provider name="AESPasswordScheme">
+         <configClass>oracle.ods.virtualization.config.AESPasswordSchemeConfig</configClass>
+         <properties>
+            <property name="enabled" value="true"/>
+            <property name="secretKey" value="{EXT-CSF}AESSecretKey"/>
+         </properties>
+      </provider>
+      <provider name="MD5PasswordScheme">
+         <configClass>oracle.ods.virtualization.config.SHAMD5PasswordSchemeConfig</configClass>
+         <properties>
+            <property name="enabled" value="true"/>
+            <property name="schemeName" value="MD5"/>
+         </properties>
+      </provider>
+   </passwordScheme>
+   <auditLogPublisher>
+      <provider name="FMWAuditLogPublisher">
+         <configClass>oracle.ods.virtualization.config.FMWAuditLogPublisherConfig</configClass>
+         <properties>
+            <property name="enabled" value="true"/>
+            <property name="contextName" value="default"/>
+            <property name="applicationName" value="$APP_DEPLOYMENT_NAME$"/>
+         </properties>
+      </provider>
+      <provider name="AccessLogPublisher">
+         <configClass>oracle.ods.virtualization.config.AccessLogPublisherConfig</configClass>
+         <properties>
+            <property name="enabled" value="true"/>
+         </properties>
+      </provider>
+   </auditLogPublisher>
+   <trustManagerProvider>
+      <provider name="FileTrustManager">
+         <configClass>oracle.ods.virtualization.config.FileTrustManagerProviderConfig</configClass>
+         <properties>
+            <property name="enabled" value="true"/>
+            <property name="trustStoreFile" value="$CONFIG_DIR$/keystores/adapters.jks"/>
+            <property name="trustStorePassword" value="{EXT-CSF}TrustStorePassword"/>
+            <property name="certPolicy" value="ACCEPT_ALWAYS"/>
+         </properties>
+      </provider>
+      <provider name="BlindTrustManager">
+         <configClass>oracle.ods.virtualization.config.BlindTrustManagerProviderConfig</configClass>
+         <properties>
+            <property name="enabled" value="false"/>
+         </properties>
+      </provider>
+      <provider name="KSSTrustManager">
+         <configClass>oracle.ods.virtualization.config.KSSTrustManagerProviderConfig</configClass>
+         <properties>
+            <property name="enabled" value="false"/>
+         </properties>
+      </provider>
+   </trustManagerProvider>
+   <keyManagerProvider>
+      <provider name="FileKeyManager">
+         <configClass>oracle.ods.virtualization.config.FileKeyManagerProviderConfig</configClass>
+         <properties>
+            <property name="enabled" value="true"/>
+            <property name="keyStoreFile" value="$CONFIG_DIR$/keystores/adapters.jks"/>
+            <property name="keyStorePassword" value="{EXT-CSF}TrustStorePassword"/>
+         </properties>
+      </provider>
+      <provider name="KSSKeyManager">
+         <configClass>oracle.ods.virtualization.config.KSSKeyManagerProviderConfig</configClass>
+         <properties>
+            <property name="enabled" value="false"/>
+            <property name="kssAppName" value="libovd"/>
+            <property name="kssKeyStoreName" value="adapters"/>
+         </properties>
+      </provider>
+   </keyManagerProvider>
+   <threadProvider>
+      <provider name="StandardThread">
+         <configClass>oracle.ods.virtualization.config.GenericThreadProviderConfig</configClass>
+         <properties>
+            <property name="enabled" value="true"/>
+            <property name="implementationClass" value="oracle.ods.virtualization.engine.util.thread.StandardThreadExecutorImpl"/>
+         </properties>
+      </provider>
+      <provider name="CommonJThread">
+         <configClass>oracle.ods.virtualization.config.GenericThreadProviderConfig</configClass>
+         <properties>
+            <property name="enabled" value="false"/>
+            <property name="implementationClass" value="oracle.ods.virtualization.engine.util.thread.commonj.CommonJThreadExecutorImpl"/>
+         </properties>
+      </provider>
+   </threadProvider>
+   <timerProvider>
+      <provider name="StandardTimer">
+         <configClass>oracle.ods.virtualization.config.GenericTimerProviderConfig</configClass>
+         <properties>
+            <property name="enabled" value="true"/>
+            <property name="implementationClass" value="oracle.ods.virtualization.engine.util.timer.StandardTimerExecutorImpl"/>
+         </properties>
+      </provider>
+      <provider name="CommonJTimer">
+         <configClass>oracle.ods.virtualization.config.GenericTimerProviderConfig</configClass>
+         <properties>
+            <property name="enabled" value="false"/>
+            <property name="implementationClass" value="oracle.ods.virtualization.engine.util.timer.commonj.CommonJTimerExecutorImpl"/>
+         </properties>
+      </provider>
+   </timerProvider>
+</providers>

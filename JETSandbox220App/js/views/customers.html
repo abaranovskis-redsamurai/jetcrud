@@ -1,0 +1,47 @@
+<div class="oj-flex oj-header-border">
+    <div class="oj-flex-item">
+        <div style="padding: 5px;"></div>
+        <h2 class="oj-sm-float-start">Customers</h2>
+        <div class="oj-sm-float-end" id='buttons-container'>    
+          <button id="addCust" data-bind="click: addCustomer, ojComponent: {component: 'ojButton', 
+                                                                           icons: {end:'oj-fwk-icon-caret-end oj-fwk-icon'}, 
+                                                                           label: 'Add Customer'}">
+          </button>
+        </div>
+    </div> 
+</div>
+<table id="customers"
+      summary="Customer Table"
+      aria-label="Customers Table"
+      data-bind="ojComponent: {component:'ojTable',
+                               data: customers,
+                               rootAttributes: {'style':'width: 100%; height:100%;'},
+                               columns: [{headerText: 'Employee ID', field: 'EmployeeId'},
+                                         {headerText: 'First Name', field: 'FirstName'},
+                                         {headerText: 'Last Name', field: 'LastName'},
+                                         {headerText: 'Email', field: 'Email', headerClassName: 'oj-sm-only-hide', className: 'oj-sm-only-hide'},
+                                         {headerText: 'Actions', field: 'operations'}],
+                               rowTemplate: 'row_template'}">
+</table>
+<div id="pg1" data-bind="ojComponent: {component: 'ojPagingControl', data: customers, pageSize: 10}">
+</div>
+<script type="text/html" id="row_template">
+  <tr>
+    <td data-bind="text: EmployeeId"></td>
+    <td data-bind="text: FirstName"></td>
+    <td data-bind="text: LastName"></td>
+    <td data-bind="text: Email"></td>
+    <td>
+      <button data-bind="click: function() {$parent.editCustomer(EmployeeId) }, ojComponent: {component: 'ojButton',
+                                                                                              display: 'icons', 
+                                                                                              icons: {end: 'oj-fwk-icon-caret-end oj-fwk-icon'},
+                                                                                              label: 'Edit'}">
+      </button>
+      <button data-bind="click: function() {$parent.deleteCustomer($parent, EmployeeId)}, ojComponent: {component: 'ojButton', 
+                                                                                                   display: 'icons', 
+                                                                                                   icons: {end:'demo-garbage-icon-24 demo-icon-font-24'},
+                                                                                                   label: 'Remove'}">
+      </button>
+    </td>
+  </tr>
+</script>

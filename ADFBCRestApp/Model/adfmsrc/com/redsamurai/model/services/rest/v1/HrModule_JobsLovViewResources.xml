@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.0.31" id="HrModule_JobsLovViewResources"
+                Package="com.redsamurai.model.services.rest.v1" usageMode="RESTClient">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="JobsLovView1" RangeSize="-1" DataControl="HrModuleDataControl" id="JobsLovView1Iter"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="JobsLovView1Iter" id="Jobs" AccessorFolder="Always">
+      <nodeDefinition DefName="com.redsamurai.model.views.lovs.JobsLovView"
+                      Name="com.redsamurai.model.views.lovs.JobsLovView"/>
+    </tree>
+  </bindings>
+</pageDefinition>

@@ -1,0 +1,238 @@
+// Copyright (c) 2014, 2016, Oracle and/or its affiliates. The Universal Permissive License (UPL), Version 1.0
+@import "../../utilities/oj.utilities";
+
+
+// ----- start dependencies ---------
+
+// set up include variables before importing dependencies
+@if $includeRadiosetClasses != false {
+  $includePopupClasses:             true !global;
+  $includeLabelClasses:             true !global;
+  $includeMessagingClasses:         true !global;
+  $includeFormControlCommonClasses: true !global;
+  $includeIconClasses: true !global;
+}
+
+// import dependencies
+@import "../../common/helpers/oj.common.helpers";
+@import "oj.alta.ios.messaging";
+@import "oj.alta.ios.popup";
+@import "oj.alta.ios.formcontrol.label";
+@import "oj.alta.ios.formcontrol.common";
+@import "oj.alta.ios.icons";
+
+// ----- end dependencies ---------
+
+
+// import classes defined in the common directory
+@import "../../common/widgets/oj.common.formcontrol.radioset";
+
+
+@if $includeRadiosetClasses != false {
+  @include module-include-once("alta.ios.radioset") {
+
+    // in ios, the divider doesn't go all the way to the starting edge. We implement this
+    // with a background-image. In common, we have a border that goes all the way across that
+    // we need to turn off.
+    // using linear-gradient allows us to customize the color of the border 
+    .oj-radioset .oj-choice-row,
+    .oj-checkboxset .oj-choice-row {
+      background-image: linear-gradient($radioCheckboxItemDividerColor, $radioCheckboxItemDividerColor);
+      background-size: 100% 1px;
+      // if the image is first, then don't have the border-bottom go under the image.
+      @if ($radioCheckboxLabelPosition == "end") {
+        @include oj-ltr() {
+          background-position: 36px 0;
+        }
+        @include oj-rtl() {
+          background-position: -36px 0;
+        } 
+      } @else {
+        @include oj-ltr() {
+          background-position: 10px 0;
+        }
+        @include oj-rtl() {
+          background-position: -10px 0;
+        }
+      }
+      background-repeat: no-repeat;
+      box-sizing: border-box;
+      
+    }
+    
+    // if the image is first, then don't have the border-bottom go under the image.
+    .oj-radioset-input-start  .oj-choice-row,
+    .oj-checkboxset-input-start .oj-choice-row {
+      @include oj-ltr() {
+        background-position: 36px 0;
+      }
+      @include oj-rtl() {
+        background-position: -36px 0;
+      }
+    }
+    
+    .oj-radioset-input-end  .oj-choice-row,
+    .oj-checkboxset-input-end .oj-choice-row {
+      @include oj-ltr() {
+        background-position: 10px 0;
+      }
+      @include oj-rtl() {
+        background-position: -10px 0;
+      }
+    }
+    
+    .oj-radioset .oj-choice-row:first-child,
+    .oj-checkboxset .oj-choice-row:first-child {
+      background-size: 0;
+      background-image: none;
+    }
+    
+    .oj-radioset .oj-choice-row:not(:first-child),
+    .oj-checkboxset .oj-choice-row:not(:first-child) {
+      border-top: 1px solid transparent;
+    }
+    
+    // remove linear-gradient background image on active. instead we want a border that goes
+    // all the way across.
+    .oj-radioset .oj-choice-row:not(.oj-disabled):active, 
+    .oj-radioset .oj-choice-row:not(.oj-disabled):active+.oj-choice-row,
+    .oj-checkboxset .oj-choice-row:not(.oj-disabled):active, 
+    .oj-checkboxset .oj-choice-row:not(.oj-disabled):active+.oj-choice-row {
+      background-size: 0;
+      background-image: none;
+    }
+    
+    @if($radioCheckboxRenderInputAs == 'backgroundImage') {
+      
+      // background-size to scale image size. this determines the size of the image. without this set
+      // the image is what you get in the svg.
+      .oj-radio-label .oj-radiocheckbox-icon,
+      .oj-checkbox-label .oj-radiocheckbox-icon {
+        width: 1rem; // 14px
+        height: 1rem; // 14px
+      }
+        
+      @include oj-radiocheckbox-image-margin($radioCheckboxLabelToEdgePadding);
+         
+      // position radio/checkbox underneath the icon for voiceover to work
+      // the calculation is margin from side (10px) + 1/4*width of image
+      @include oj-radiocheckbox-position-input(13px);
+      
+      // ios doesn't have an icon if it isn't selected.
+      .oj-radio-label .oj-radiocheckbox-icon,
+      .oj-checkbox-label .oj-radiocheckbox-icon {
+        background-image: none; 
+      }
+               
+      .oj-radio-label.oj-disabled .oj-radiocheckbox-icon,
+      .oj-checkbox-label.oj-disabled .oj-radiocheckbox-icon {
+        background-image: none; 
+      }
+                    
+      .oj-radio-label.oj-active .oj-radiocheckbox-icon,
+      .oj-checkbox-label.oj-active .oj-radiocheckbox-icon {
+        background-image: none;
+      }
+
+      .oj-radio-label.oj-active.oj-selected .oj-radiocheckbox-icon{
+        background-image: oj-radiocheckbox-image-url("radio_ena_selected.svg"); 
+      }
+      
+      .oj-checkbox-label.oj-active.oj-selected .oj-radiocheckbox-icon {
+        background-image: oj-radiocheckbox-image-url("checkbox_ena_selected.svg"); 
+      }
+
+      
+      // ** single checkbox images -- in ios theme, if the checkboxset has only one checkbox, it has
+      // a different image with different dimensions.
+      // ** inline mode -- we decided to show the single checkbox icon when the radioset or
+      // checkboxset is inline using oj-choice-row-inline.
+
+      .oj-choice-row-inline .oj-radio-label .oj-radiocheckbox-icon,
+      .oj-choice-row-inline .oj-checkbox-label .oj-radiocheckbox-icon,
+      .oj-checkboxset-single  .oj-checkbox-label .oj-radiocheckbox-icon {
+        width: 22px;
+        height: 22px;
+      }
+
+      .oj-choice-row-inline .oj-radio-label .oj-radiocheckbox-icon,
+      .oj-choice-row-inline .oj-checkbox-label .oj-radiocheckbox-icon,
+      .oj-checkboxset-single .oj-checkbox-label .oj-radiocheckbox-icon {
+        background-image: oj-radiocheckbox-image-url("cbsingle_ena_unselected.svg"); 
+      }
+
+      .oj-choice-row-inline  .oj-radio-label.oj-selected  .oj-radiocheckbox-icon,
+      .oj-choice-row-inline  .oj-checkbox-label.oj-selected  .oj-radiocheckbox-icon,
+      .oj-checkboxset-single .oj-checkbox-label.oj-selected  .oj-radiocheckbox-icon {
+        background-image: oj-radiocheckbox-image-url("cbsingle_ena_selected.svg"); 
+      }  
+
+      .oj-choice-row-inline .oj-radio-label:active .oj-radiocheckbox-icon,
+      .oj-choice-row-inline .oj-checkbox-label:active .oj-radiocheckbox-icon,
+      .oj-checkboxset-single .oj-checkbox-label:active .oj-radiocheckbox-icon {
+       background-image: oj-radiocheckbox-image-url("cbsingle_pressed_unselected.svg");
+      }
+
+      .oj-choice-row-inline .oj-radio-label:active.oj-selected .oj-radiocheckbox-icon,
+      .oj-choice-row-inline .oj-checkbox-label:active.oj-selected .oj-radiocheckbox-icon,
+      .oj-checkboxset-single .oj-checkbox-label:active.oj-selected .oj-radiocheckbox-icon {
+       background-image: oj-radiocheckbox-image-url("cbsingle_pressed_selected.svg");
+      }
+
+      .oj-choice-row-inline .oj-radio-label.oj-disabled .oj-radiocheckbox-icon,
+      .oj-choice-row-inline .oj-checkbox-label.oj-disabled .oj-radiocheckbox-icon,
+      .oj-checkboxset-single .oj-checkbox-label.oj-disabled .oj-radiocheckbox-icon {
+        background-image: oj-radiocheckbox-image-url("cbsingle_dis_unselected.svg");
+      }
+
+      .oj-choice-row-inline .oj-radio-label.oj-disabled.oj-selected .oj-radiocheckbox-icon,
+      .oj-choice-row-inline .oj-checkbox-label.oj-disabled.oj-selected .oj-radiocheckbox-icon,
+      .oj-checkboxset-single .oj-checkbox-label.oj-disabled.oj-selected .oj-radiocheckbox-icon {
+        background-image: oj-radiocheckbox-image-url("cbsingle_dis_selected.svg");
+      }
+
+      // in high contrast mode, background-images disappear, so use content to show the checked item
+      .oj-hicontrast .oj-choice-row-inline .oj-radio-label .oj-radiocheckbox-icon,
+      .oj-hicontrast .oj-choice-row-inline .oj-checkbox-label .oj-radiocheckbox-icon,
+      .oj-hicontrast .oj-checkboxset-single .oj-checkbox-label .oj-radiocheckbox-icon {
+        background-image: none;
+      }
+
+      // in hicontrast mode, background-images disappear, so we use content to show the checked item.
+      .oj-hicontrast .oj-choice-row-inline .oj-radio-label.oj-selected .oj-radiocheckbox-icon:after,
+      .oj-hicontrast .oj-choice-row-inline .oj-checkbox-label.oj-selected .oj-radiocheckbox-icon:after,
+      .oj-hicontrast .oj-checkboxset-single .oj-checkbox-label.oj-selected .oj-radiocheckbox-icon:after {
+        content: oj-radiocheckbox-image-url("cbsingle_ena_selected.svg");
+      }
+
+      .oj-hicontrast .oj-choice-row-inline .oj-radio-label.oj-selected.oj-disabled .oj-radiocheckbox-icon:after,
+      .oj-hicontrast .oj-choice-row-inline .oj-checkbox-label.oj-selected.oj-disabled .oj-radiocheckbox-icon:after,
+      .oj-hicontrast .oj-checkboxset-single .oj-checkbox-label.oj-selected.oj-disabled .oj-radiocheckbox-icon:after {
+        content: oj-radiocheckbox-image-url("cbsingle_dis_selected.svg");
+      }
+
+      // in print mode, background-images disappear, so we use content to show the checked item.
+      @media print {
+
+        .oj-choice-row-inline .oj-radio-label .oj-radiocheckbox-icon,
+        .oj-choice-row-inline .oj-checkbox-label .oj-radiocheckbox-icon,
+        .oj-checkboxset-single .oj-checkbox-label .oj-radiocheckbox-icon {
+          background-image: none;
+        }
+
+        .oj-choice-row-inline .oj-radio-label.oj-selected .oj-radiocheckbox-icon:after,
+        .oj-choice-row-inline .oj-checkbox-label.oj-selected .oj-radiocheckbox-icon:after,
+        .oj-checkboxset-single .oj-checkbox-label.oj-selected .oj-radiocheckbox-icon:after {
+          content: oj-radiocheckbox-image-url("cbsingle_ena_selected.svg");
+        }
+
+        .oj-choice-row-inline .oj-radio-label.oj-selected.oj-disabled .oj-radiocheckbox-icon:after,
+        .oj-choice-row-inline .oj-checkbox-label.oj-selected.oj-disabled .oj-radiocheckbox-icon:after,
+        .oj-checkboxset-single .oj-checkbox-label.oj-selected.oj-disabled .oj-radiocheckbox-icon:after {
+          content: oj-radiocheckbox-image-url("cbsingle_dis_selected.svg");
+        } 
+      }  
+
+    }  
+  }
+}

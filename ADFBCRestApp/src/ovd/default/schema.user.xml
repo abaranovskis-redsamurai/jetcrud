@@ -1,0 +1,9 @@
+<dsml:dsml xmlns:dsml="http://www.dsml.org/DSML">
+  <dsml:directory-schema>
+<dsml:attribute-type id="objectSid">
+<dsml:name>objectSid</dsml:name>
+<dsml:object-identifier>1.2.840.113556.1.4.146</dsml:object-identifier>
+<dsml:syntax>1.3.6.1.4.1.1466.115.121.1.40</dsml:syntax>
+</dsml:attribute-type>
+   </dsml:directory-schema>
+</dsml:dsml>

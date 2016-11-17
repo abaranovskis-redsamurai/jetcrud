@@ -1,0 +1,393 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<IdentityDirectoryConfig xmlns="http://xmlns.oracle.com/schemas/ids/idsconfig" version="0">
+   <IdentityDirectories>
+      <IdentityDirectory name="userrole" description="User/Role entities in Default Identity Directory">
+         <Property name="entity.config" value="userrole"/>
+         <Property name="ovd.context" value="default"/>
+         <Property name="app.name" value="OPSS"/>
+         <OperationalConfig>
+            <Entity name="User">
+               <Property name="entity.searchbase" value="cn=users,dc=oracle,dc=com"/>
+               <Property name="entity.createbase" value="cn=users,dc=oracle,dc=com"/>
+               <Property name="entity.name.attr" value="commonname"/>
+               <Property name="entity.create.objclasses" value="inetorgperson"/>
+               <Property name="entity.filter.objclasses" value="person"/>
+               <Property name="entity.mls.attrs" value="description,displayname"/>
+            </Entity>
+            <Entity name="Group">
+               <Property name="entity.searchbase" value="cn=groups,dc=oracle,dc=com"/>
+               <Property name="entity.createbase" value="cn=groups,dc=oracle,dc=com"/>
+               <Property name="entity.name.attr" value="commonname"/>
+               <Property name="entity.create.objclasses" value="groupofuniquenames"/>
+               <Property name="entity.filter.objclasses" value="groupofuniquenames"/>
+               <Property name="entity.mls.attrs" value="description,displayname"/>
+            </Entity>
+         </OperationalConfig>
+      </IdentityDirectory>
+      <IdentityDirectory name="idxuserrole" description="Fusion User/Role entities in Default Identity Directory">
+         <Property name="entity.config" value="idxuserrole"/>
+         <Property name="ovd.context" value="default"/>
+         <Property name="app.name" value="OPSS"/>
+         <OperationalConfig>
+            <Entity name="User">
+               <Property name="entity.searchbase" value="cn=users,dc=oracle,dc=com"/>
+               <Property name="entity.createbase" value="cn=users,dc=oracle,dc=com"/>
+               <Property name="entity.name.attr" value="commonname"/>
+               <Property name="entity.create.objclasses" value="orclidxperson"/>
+               <Property name="entity.filter.objclasses" value="person"/>
+               <Property name="entity.mls.attrs" value="description,displayname"/>
+            </Entity>
+            <Entity name="Group">
+               <Property name="entity.searchbase" value="cn=groups,dc=oracle,dc=com"/>
+               <Property name="entity.createbase" value="cn=groups,dc=oracle,dc=com"/>
+               <Property name="entity.name.attr" value="commonname"/>
+               <Property name="entity.create.objclasses" value="orclidxgroup"/>
+               <Property name="entity.filter.objclasses" value="groupofuniquenames"/>
+               <Property name="entity.mls.attrs" value="description,displayname"/>
+            </Entity>
+         </OperationalConfig>
+      </IdentityDirectory>
+   </IdentityDirectories>
+   <EntitiesConfig>
+      <EntityConfig name="userrole">
+         <Attributes>
+            <Attribute name="name" dataType="string" description="name"/>
+            <Attribute name="commonname" dataType="string" description="common name"/>
+            <Attribute name="displayname" dataType="string" description="display name"/>
+            <Attribute name="uid" dataType="string" description="uid"/>
+            <Attribute name="loginid" dataType="string" description="login id"/>
+            <Attribute name="firstname" dataType="string" description="first name"/>
+            <Attribute name="lastname" dataType="string" description="last name"/>
+            <Attribute name="middlename" dataType="string" description="middle name"/>
+            <Attribute name="initials" dataType="string" description="initials"/>
+            <Attribute name="maidenname" dataType="string" description="maiden name"/>
+            <Attribute name="description" dataType="string" description="description"/>
+            <Attribute name="dateofbirth" dataType="string" description="date of birth"/>
+            <Attribute name="gender" dataType="string" description="gender"/>
+            <Attribute name="mail" dataType="string" description="mail"/>
+            <Attribute name="employeenumber" dataType="string" description="employee number"/>
+            <Attribute name="employeetype" dataType="string" description="employee type"/>
+            <Attribute name="title" dataType="string" description="title"/>
+            <Attribute name="hiredate" dataType="string" description="hire date"/>
+            <Attribute name="activestartdate" dataType="string" description="active start date"/>
+            <Attribute name="activeenddate" dataType="string" description="active end date"/>
+            <Attribute name="department" dataType="string" description="department"/>
+            <Attribute name="org" dataType="string" description="org"/>
+            <Attribute name="orgunit" dataType="string" description="org unit"/>
+            <Attribute name="manager" dataType="x500name" description="manager"/>
+            <Attribute name="timezone" dataType="string" description="timezone"/>
+            <Attribute name="preferredlanguage" dataType="string" description="preferred language"/>
+            <Attribute name="homephone" dataType="string" description="home phone"/>
+            <Attribute name="homeaddress" dataType="string" description="home address"/>
+            <Attribute name="localityname" dataType="string" description="locality name"/>
+            <Attribute name="telephone" dataType="string" description="telephone"/>
+            <Attribute name="mobile" dataType="string" description="mobile"/>
+            <Attribute name="pager" dataType="string" description="pager"/>
+            <Attribute name="fax" dataType="string" description="fax"/>
+            <Attribute name="street" dataType="string" description="street"/>
+            <Attribute name="postaladdress" dataType="string" description="postal address"/>
+            <Attribute name="pobox" dataType="string" description="pobox"/>
+            <Attribute name="state" dataType="string" description="state"/>
+            <Attribute name="postalcode" dataType="string" description="postal code"/>
+            <Attribute name="country" dataType="string" description="country"/>
+            <Attribute name="wirelessacctnumber" dataType="string" description="wireless account number"/>
+            <Attribute name="defaultgroup" dataType="x500name" description="default group"/>
+            <Attribute name="uiaccessmode" dataType="string" description="UI access mode"/>
+            <Attribute name="jpegphoto" dataType="binary" description="jpeg photo"/>
+            <Attribute name="usercertificate" dataType="binary" description="user certificate"/>
+            <Attribute name="guid" dataType="string" description="global unique id" readOnly="true"/>
+            <Attribute name="seealso" dataType="string" description="see also"/>
+            <Attribute name="member" dataType="x500name" description="member of group"/>
+            <Attribute name="owner" dataType="x500name" description="group owner"/>
+            <Attribute name="rolemanager" dataType="x500name" description="group manager"/>
+            <Attribute name="rolecategory" dataType="string" description="role category"/>
+            <Attribute name="uniquename" dataType="string" description="unique name"/>
+            <Attribute name="password" dataType="string" description="user password" pwdAttr="true"/>
+            <Attribute name="tenantguid" dataType="string" description="Tenant Global Unique Id"/>
+            <Attribute name="tenantuniquename" dataType="string" description="Tenant Unique Name"/>
+            <Attribute name="tenantuid" dataType="string" description="Tenant Unique ID"/>
+            <Attribute name="visible" dataType="string" description="Is visible" readOnly="true"/>
+            <Attribute name="generationqualifier" dataType="string" description="Name strings that are typically the suffix part of the person name (e.g. III, 3rd, Jr.)"/>
+            <Attribute name="tenantgid" dataType="string" description="Tenant Group ID"/>
+         </Attributes>
+         <Entities>
+            <Entity name="User" type="user" idAttr="loginid" create="true" modify="true" delete="true" search="true" pwdAttr="password" guidAttr="guid" firstnameAttr="firstname" lastnameAttr="lastname" uidAttr="uid" mailAttr="mail" displaynameAttr="displayname" descriptionAttr="description" commonIdAttr="uid">
+               <AttrRef name="name"/>
+               <AttrRef name="commonname"/>
+               <AttrRef name="displayname"/>
+               <AttrRef name="uid"/>
+               <AttrRef name="loginid"/>
+               <AttrRef name="firstname"/>
+               <AttrRef name="lastname"/>
+               <AttrRef name="middlename"/>
+               <AttrRef name="initials"/>
+               <AttrRef name="maidenname"/>
+               <AttrRef name="description"/>
+               <AttrRef name="dateofbirth"/>
+               <AttrRef name="gender"/>
+               <AttrRef name="mail"/>
+               <AttrRef name="employeenumber"/>
+               <AttrRef name="employeetype"/>
+               <AttrRef name="title"/>
+               <AttrRef name="hiredate"/>
+               <AttrRef name="activestartdate"/>
+               <AttrRef name="activeenddate"/>
+               <AttrRef name="department"/>
+               <AttrRef name="org"/>
+               <AttrRef name="orgunit"/>
+               <AttrRef name="manager" filter="equals"/>
+               <AttrRef name="timezone"/>
+               <AttrRef name="preferredlanguage"/>
+               <AttrRef name="homephone"/>
+               <AttrRef name="homeaddress"/>
+               <AttrRef name="localityname"/>
+               <AttrRef name="telephone"/>
+               <AttrRef name="mobile"/>
+               <AttrRef name="pager"/>
+               <AttrRef name="fax"/>
+               <AttrRef name="street"/>
+               <AttrRef name="postaladdress"/>
+               <AttrRef name="pobox"/>
+               <AttrRef name="state"/>
+               <AttrRef name="postalcode"/>
+               <AttrRef name="country"/>
+               <AttrRef name="wirelessacctnumber"/>
+               <AttrRef name="defaultgroup"/>
+               <AttrRef name="uiaccessmode"/>
+               <AttrRef name="jpegphoto" defaultFetch="false" filter="none"/>
+               <AttrRef name="usercertificate" defaultFetch="false" filter="none"/>
+               <AttrRef name="guid" filter="equals"/>
+               <AttrRef name="uniquename"/>
+               <AttrRef name="password"/>
+               <AttrRef name="tenantguid"/>
+               <AttrRef name="tenantuniquename"/>
+               <AttrRef name="tenantuid"/>
+               <AttrRef name="visible"/>
+               <AttrRef name="generationqualifier"/>
+            </Entity>
+            <Entity name="Group" type="group" idAttr="commonname" create="true" modify="true" delete="true" search="true" guidAttr="guid" mailAttr="mail" displaynameAttr="displayname" descriptionAttr="description" commonIdAttr="commonname">
+               <AttrRef name="name"/>
+               <AttrRef name="commonname"/>
+               <AttrRef name="displayname"/>
+               <AttrRef name="description"/>
+               <AttrRef name="mail"/>
+               <AttrRef name="member" defaultFetch="false" filter="equals"/>
+               <AttrRef name="owner" defaultFetch="false" filter="equals"/>
+               <AttrRef name="rolemanager" defaultFetch="false" filter="equals"/>
+               <AttrRef name="seealso" defaultFetch="false"/>
+               <AttrRef name="rolecategory"/>
+               <AttrRef name="org"/>
+               <AttrRef name="orgunit"/>
+               <AttrRef name="guid" filter="equals"/>
+               <AttrRef name="uniquename"/>
+               <AttrRef name="tenantguid"/>
+               <AttrRef name="tenantuniquename"/>
+               <AttrRef name="tenantuid"/>
+               <AttrRef name="visible"/>
+               <AttrRef name="tenantgid"/>
+            </Entity>
+         </Entities>
+         <EntityRelations>
+            <EntityRelation name="manager" type="ManyToOne" fromEntity="User" fromAttr="manager" toEntity="User" toAttr="principal" recursive="true"/>
+            <EntityRelation name="reportee" type="OneToMany" fromEntity="User" fromAttr="principal" toEntity="User" toAttr="manager" recursive="true"/>
+            <EntityRelation name="groupMember_group" type="ManyToMany" fromEntity="Group" fromAttr="member" toEntity="Group" toAttr="principal" recursive="true"/>
+            <EntityRelation name="groupMember_user" type="ManyToMany" fromEntity="Group" fromAttr="member" toEntity="User" toAttr="principal"/>
+            <EntityRelation name="group_memberOfGroup" type="ManyToMany" fromEntity="Group" fromAttr="principal" toEntity="Group" toAttr="member" recursive="true"/>
+            <EntityRelation name="user_memberOfGroup" type="ManyToMany" fromEntity="User" fromAttr="principal" toEntity="Group" toAttr="member"/>
+            <EntityRelation name="groupOwner_group" type="ManyToMany" fromEntity="Group" fromAttr="owner" toEntity="Group" toAttr="principal"/>
+            <EntityRelation name="groupOwner_user" type="ManyToMany" fromEntity="Group" fromAttr="owner" toEntity="User" toAttr="principal"/>
+            <EntityRelation name="group_ownerOfGroup" type="ManyToMany" fromEntity="Group" fromAttr="principal" toEntity="Group" toAttr="owner"/>
+            <EntityRelation name="user_ownerOfGroup" type="ManyToMany" fromEntity="User" fromAttr="principal" toEntity="Group" toAttr="owner"/>
+            <EntityRelation name="groupManager_group" type="ManyToMany" fromEntity="Group" fromAttr="rolemanager" toEntity="Group" toAttr="principal"/>
+            <EntityRelation name="groupManager_user" type="ManyToMany" fromEntity="Group" fromAttr="rolemanager" toEntity="User" toAttr="principal"/>
+            <EntityRelation name="group_managerOfGroup" type="ManyToMany" fromEntity="Group" fromAttr="principal" toEntity="Group" toAttr="rolemanager"/>
+            <EntityRelation name="user_managerOfGroup" type="ManyToMany" fromEntity="User" fromAttr="principal" toEntity="Group" toAttr="rolemanager"/>
+         </EntityRelations>
+      </EntityConfig>
+      <EntityConfig name="idxuserrole">
+         <Attributes>
+            <Attribute name="name" dataType="string" description="name"/>
+            <Attribute name="commonname" dataType="string" description="common name"/>
+            <Attribute name="displayname" dataType="string" description="display name"/>
+            <Attribute name="uid" dataType="string" description="uid"/>
+            <Attribute name="loginid" dataType="string" description="login id"/>
+            <Attribute name="firstname" dataType="string" description="first name"/>
+            <Attribute name="lastname" dataType="string" description="last name"/>
+            <Attribute name="middlename" dataType="string" description="middle name"/>
+            <Attribute name="initials" dataType="string" description="initials"/>
+            <Attribute name="maidenname" dataType="string" description="maiden name"/>
+            <Attribute name="description" dataType="string" description="description"/>
+            <Attribute name="dateofbirth" dataType="string" description="date of birth"/>
+            <Attribute name="gender" dataType="string" description="gender"/>
+            <Attribute name="mail" dataType="string" description="mail"/>
+            <Attribute name="employeenumber" dataType="string" description="employee number"/>
+            <Attribute name="employeetype" dataType="string" description="employee type"/>
+            <Attribute name="title" dataType="string" description="title"/>
+            <Attribute name="hiredate" dataType="string" description="hire date"/>
+            <Attribute name="activestartdate" dataType="string" description="active start date"/>
+            <Attribute name="activeenddate" dataType="string" description="active end date"/>
+            <Attribute name="department" dataType="string" description="department"/>
+            <Attribute name="org" dataType="string" description="org"/>
+            <Attribute name="orgunit" dataType="string" description="org unit"/>
+            <Attribute name="manager" dataType="x500name" description="manager"/>
+            <Attribute name="timezone" dataType="string" description="timezone"/>
+            <Attribute name="preferredlanguage" dataType="string" description="preferred language"/>
+            <Attribute name="homephone" dataType="string" description="home phone"/>
+            <Attribute name="homeaddress" dataType="string" description="home address"/>
+            <Attribute name="localityname" dataType="string" description="locality name"/>
+            <Attribute name="telephone" dataType="string" description="telephone"/>
+            <Attribute name="mobile" dataType="string" description="mobile"/>
+            <Attribute name="pager" dataType="string" description="pager"/>
+            <Attribute name="fax" dataType="string" description="fax"/>
+            <Attribute name="street" dataType="string" description="street"/>
+            <Attribute name="postaladdress" dataType="string" description="postal address"/>
+            <Attribute name="pobox" dataType="string" description="pobox"/>
+            <Attribute name="state" dataType="string" description="state"/>
+            <Attribute name="postalcode" dataType="string" description="postal code"/>
+            <Attribute name="country" dataType="string" description="country"/>
+            <Attribute name="wirelessacctnumber" dataType="string" description="wireless account number"/>
+            <Attribute name="defaultgroup" dataType="x500name" description="default group"/>
+            <Attribute name="uiaccessmode" dataType="string" description="UI access mode"/>
+            <Attribute name="jpegphoto" dataType="binary" description="jpeg photo"/>
+            <Attribute name="usercertificate" dataType="binary" description="user certificate"/>
+            <Attribute name="guid" dataType="string" description="global unique id" readOnly="true"/>
+            <Attribute name="seealso" dataType="string" description="see also"/>
+            <Attribute name="member" dataType="x500name" description="member of group"/>
+            <Attribute name="owner" dataType="x500name" description="group owner"/>
+            <Attribute name="rolemanager" dataType="x500name" description="group manager"/>
+            <Attribute name="rolecategory" dataType="string" description="role category"/>
+            <Attribute name="uniquename" dataType="string" description="unique name"/>
+            <Attribute name="password" dataType="string" description="user password" pwdAttr="true"/>
+            <Attribute name="colorcontrast" dataType="string" description="Color contract"/>
+            <Attribute name="fontsize" dataType="string" description="Font size"/>
+            <Attribute name="numberformat" dataType="string" description="Number format"/>
+            <Attribute name="currency" dataType="string" description="Currency"/>
+            <Attribute name="dateformat" dataType="string" description="Date format"/>
+            <Attribute name="timeformat" dataType="string" description="Time format"/>
+            <Attribute name="embeddedhelp" dataType="string" description="Embedded Help"/>
+            <Attribute name="fusionapplanguage" dataType="string" description="Fusion app language"/>
+            <Attribute name="fusionappterritory" dataType="string" description="Fusion app territory"/>
+            <Attribute name="fusiondisplaynamelangpref" dataType="string" description="Fusion displayname language preference"/>
+            <Attribute name="fusionappuserid" dataType="string" description="Fusion app userid"/>
+            <Attribute name="fusionapppersonid" dataType="string" description="Fusion app personid"/>
+            <Attribute name="fusionapppartyid" dataType="string" description="Fusion app partyid"/>
+            <Attribute name="impersonationgrantee" dataType="string" description="Impersonation grantee"/>
+            <Attribute name="impersonationgranter" dataType="string" description="Impersonation granter"/>
+            <Attribute name="tenantguid" dataType="string" description="Tenant Global Unique Id"/>
+            <Attribute name="tenantuniquename" dataType="string" description="Tenant Unique Name"/>
+            <Attribute name="tenantuid" dataType="string" description="Tenant Unique ID"/>
+            <Attribute name="visible" dataType="string" description="Is Visible" readOnly="true"/>
+            <Attribute name="generationqualifier" dataType="string" description="Name strings that are typically the suffix part of the person name (e.g. III, 3rd, Jr.)"/>
+            <Attribute name="tenantgid" dataType="string" description="Tenant Group ID"/>
+         </Attributes>
+         <Entities>
+            <Entity name="User" type="user" idAttr="loginid" create="false" modify="false" delete="false" search="true" pwdAttr="password" guidAttr="guid" firstnameAttr="firstname" lastnameAttr="lastname" uidAttr="uid" mailAttr="mail" displaynameAttr="displayname" descriptionAttr="description" commonIdAttr="uid">
+               <AttrRef name="name"/>
+               <AttrRef name="commonname"/>
+               <AttrRef name="displayname"/>
+               <AttrRef name="uid"/>
+               <AttrRef name="loginid"/>
+               <AttrRef name="firstname"/>
+               <AttrRef name="lastname"/>
+               <AttrRef name="middlename"/>
+               <AttrRef name="initials"/>
+               <AttrRef name="maidenname"/>
+               <AttrRef name="description"/>
+               <AttrRef name="dateofbirth"/>
+               <AttrRef name="gender"/>
+               <AttrRef name="mail"/>
+               <AttrRef name="employeenumber"/>
+               <AttrRef name="employeetype"/>
+               <AttrRef name="title"/>
+               <AttrRef name="hiredate"/>
+               <AttrRef name="activestartdate"/>
+               <AttrRef name="activeenddate"/>
+               <AttrRef name="department"/>
+               <AttrRef name="org"/>
+               <AttrRef name="orgunit"/>
+               <AttrRef name="manager" filter="equals"/>
+               <AttrRef name="timezone"/>
+               <AttrRef name="preferredlanguage"/>
+               <AttrRef name="homephone"/>
+               <AttrRef name="homeaddress"/>
+               <AttrRef name="localityname"/>
+               <AttrRef name="telephone"/>
+               <AttrRef name="mobile"/>
+               <AttrRef name="pager"/>
+               <AttrRef name="fax"/>
+               <AttrRef name="street"/>
+               <AttrRef name="postaladdress"/>
+               <AttrRef name="pobox"/>
+               <AttrRef name="state"/>
+               <AttrRef name="postalcode"/>
+               <AttrRef name="country"/>
+               <AttrRef name="wirelessacctnumber"/>
+               <AttrRef name="defaultgroup"/>
+               <AttrRef name="uiaccessmode"/>
+               <AttrRef name="jpegphoto" defaultFetch="false" filter="none"/>
+               <AttrRef name="usercertificate" defaultFetch="false" filter="none"/>
+               <AttrRef name="guid" filter="equals"/>
+               <AttrRef name="uniquename"/>
+               <AttrRef name="password"/>
+               <AttrRef name="colorcontrast"/>
+               <AttrRef name="fontsize"/>
+               <AttrRef name="numberformat"/>
+               <AttrRef name="currency"/>
+               <AttrRef name="dateformat"/>
+               <AttrRef name="timeformat"/>
+               <AttrRef name="embeddedhelp"/>
+               <AttrRef name="fusionapplanguage"/>
+               <AttrRef name="fusionappterritory"/>
+               <AttrRef name="fusiondisplaynamelangpref"/>
+               <AttrRef name="fusionappuserid"/>
+               <AttrRef name="fusionapppersonid"/>
+               <AttrRef name="fusionapppartyid"/>
+               <AttrRef name="impersonationgrantee"/>
+               <AttrRef name="impersonationgranter"/>
+               <AttrRef name="tenantguid"/>
+               <AttrRef name="tenantuniquename"/>
+               <AttrRef name="tenantuid"/>
+               <AttrRef name="visible"/>
+               <AttrRef name="generationqualifier"/>
+            </Entity>
+            <Entity name="Group" type="group" idAttr="commonname" create="false" modify="false" delete="false" search="true" guidAttr="guid" mailAttr="mail" displaynameAttr="displayname" descriptionAttr="description" commonIdAttr="commonname">
+               <AttrRef name="name"/>
+               <AttrRef name="commonname"/>
+               <AttrRef name="displayname"/>
+               <AttrRef name="description"/>
+               <AttrRef name="mail"/>
+               <AttrRef name="member" defaultFetch="false" filter="equals"/>
+               <AttrRef name="owner" defaultFetch="false" filter="equals"/>
+               <AttrRef name="rolemanager" defaultFetch="false" filter="equals"/>
+               <AttrRef name="seealso" defaultFetch="false"/>
+               <AttrRef name="rolecategory"/>
+               <AttrRef name="org"/>
+               <AttrRef name="orgunit"/>
+               <AttrRef name="guid" filter="equals"/>
+               <AttrRef name="uniquename"/>
+               <AttrRef name="tenantguid"/>
+               <AttrRef name="tenantuniquename"/>
+               <AttrRef name="tenantuid"/>
+               <AttrRef name="visible"/>
+               <AttrRef name="tenantgid"/>
+            </Entity>
+         </Entities>
+         <EntityRelations>
+            <EntityRelation name="manager" type="ManyToOne" fromEntity="User" fromAttr="manager" toEntity="User" toAttr="principal" recursive="true"/>
+            <EntityRelation name="reportee" type="OneToMany" fromEntity="User" fromAttr="principal" toEntity="User" toAttr="manager" recursive="true"/>
+            <EntityRelation name="groupMember_group" type="ManyToMany" fromEntity="Group" fromAttr="member" toEntity="Group" toAttr="principal" recursive="true"/>
+            <EntityRelation name="groupMember_user" type="ManyToMany" fromEntity="Group" fromAttr="member" toEntity="User" toAttr="principal"/>
+            <EntityRelation name="group_memberOfGroup" type="ManyToMany" fromEntity="Group" fromAttr="principal" toEntity="Group" toAttr="member" recursive="true"/>
+            <EntityRelation name="user_memberOfGroup" type="ManyToMany" fromEntity="User" fromAttr="principal" toEntity="Group" toAttr="member"/>
+            <EntityRelation name="groupOwner_group" type="ManyToMany" fromEntity="Group" fromAttr="owner" toEntity="Group" toAttr="principal"/>
+            <EntityRelation name="groupOwner_user" type="ManyToMany" fromEntity="Group" fromAttr="owner" toEntity="User" toAttr="principal"/>
+            <EntityRelation name="group_ownerOfGroup" type="ManyToMany" fromEntity="Group" fromAttr="principal" toEntity="Group" toAttr="owner"/>
+            <EntityRelation name="user_ownerOfGroup" type="ManyToMany" fromEntity="User" fromAttr="principal" toEntity="Group" toAttr="owner"/>
+            <EntityRelation name="groupManager_group" type="ManyToMany" fromEntity="Group" fromAttr="rolemanager" toEntity="Group" toAttr="principal"/>
+            <EntityRelation name="groupManager_user" type="ManyToMany" fromEntity="Group" fromAttr="rolemanager" toEntity="User" toAttr="principal"/>
+            <EntityRelation name="group_managerOfGroup" type="ManyToMany" fromEntity="Group" fromAttr="principal" toEntity="Group" toAttr="rolemanager"/>
+            <EntityRelation name="user_managerOfGroup" type="ManyToMany" fromEntity="User" fromAttr="principal" toEntity="Group" toAttr="rolemanager"/>
+         </EntityRelations>
+      </EntityConfig>
+   </EntitiesConfig>
+</IdentityDirectoryConfig>

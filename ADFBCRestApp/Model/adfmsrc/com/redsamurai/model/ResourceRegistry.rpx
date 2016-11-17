@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Application xmlns="http://xmlns.oracle.com/adfm/application" version="12.2.1.0.31" id="ResourceRegistry"
+             SeparateXMLFiles="false" Package="com.redsamurai.model" ClientType="Generic">
+  <pageMap>
+    <page path="v1_Employees" usageId="v1_HrModule_EmployeesViewResources"/>
+    <page path="v1_Jobs" usageId="v1_HrModule_JobsLovViewResources"/>
+    <page path="v1_JobsChart" usageId="v1_HrModule_JobsViewResources"/>
+    <page path="v1_EmployeesJobs" usageId="v1_HrModule_EmployeesViewResources"/>
+  </pageMap>
+  <dataControlUsages>
+    <BC4JDataControl id="HrModuleDataControl" Package="com.redsamurai.model.services"
+                     FactoryClass="oracle.adf.model.bc4j.DataControlFactoryImpl" SupportsTransactions="true"
+                     SupportsFindMode="true" SupportsRangesize="true" SupportsResetState="true"
+                     SupportsSortCollection="true" Configuration="HrModuleLocal" syncMode="Immediate"
+                     xmlns="http://xmlns.oracle.com/adfm/datacontrol"/>
+  </dataControlUsages>
+  <pageDefinitionUsages>
+    <page id="v1_HrModule_EmployeesViewResources"
+          path="com.redsamurai.model.services.rest.v1.HrModule_EmployeesViewResources"/>
+    <page id="v1_HrModule_JobsLovViewResources"
+          path="com.redsamurai.model.services.rest.v1.HrModule_JobsLovViewResources"/>
+    <page id="v1_HrModule_JobsViewResources" path="com.redsamurai.model.services.rest.v1.HrModule_JobsViewResources"/>
+  </pageDefinitionUsages>
+</Application>
