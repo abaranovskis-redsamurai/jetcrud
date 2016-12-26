@@ -11,7 +11,7 @@
       </amconfig-overrides>
     </startup>
     <versions>
-      <version name="v1" displayName="1"/>
+      <version name="v1" displayName="1" restFrameworkVersion="2"/>
     </versions>
   </adf-adfm-config>
   <adf:adf-properties-child xmlns="http://xmlns.oracle.com/adf/config/properties">
