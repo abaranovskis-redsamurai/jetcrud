@@ -4,7 +4,7 @@
 <Entity
   xmlns="http://xmlns.oracle.com/bc4j"
   Name="Employees"
-  Version="12.2.1.0.31"
+  Version="12.2.1.16.48"
   InheritPersonalization="merge"
   DBObjectType="table"
   DBObjectName="EMPLOYEES"

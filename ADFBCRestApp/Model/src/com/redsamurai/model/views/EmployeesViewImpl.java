@@ -34,6 +34,10 @@ public class EmployeesViewImpl extends ViewObjectImpl implements EmployeesView {
     public EmployeesViewImpl() {
     }
     
+    public String testCall(String param1, String param2) {
+        return param1 + param2;
+    }
+    
     public String calculateEmployees(String firstName, String lastName) {
         ViewCriteriaImpl vc = (ViewCriteriaImpl) this.getViewCriteria("EmployeesViewCriteria");
         VariableValueManager vvm = this.ensureVariableManager();

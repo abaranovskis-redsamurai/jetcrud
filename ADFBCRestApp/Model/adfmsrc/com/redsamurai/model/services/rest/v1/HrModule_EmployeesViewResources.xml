@@ -25,6 +25,14 @@
                       ReturnName="data.HrModuleDataControl.methodResults.login_HrModuleDataControl_EmployeesView1_login_result"
                       IterBinding="EmployeesView1Iter">
         </methodAction>
+        <methodAction id="testCall" RequiresUpdateModel="true" Action="invokeMethod" MethodName="testCall"
+                      IsViewObjectMethod="true" DataControl="HrModuleDataControl"
+                      InstanceName="data.HrModuleDataControl.EmployeesView1"
+                      ReturnName="data.HrModuleDataControl.methodResults.testCall_HrModuleDataControl_EmployeesView1_testCall_result"
+                      IterBinding="EmployeesView1Iter">
+            <NamedData NDName="param1" NDType="java.lang.String"/>
+            <NamedData NDName="param2" NDType="java.lang.String"/>
+        </methodAction>
         <tree IterBinding="EmployeesView1Iter" id="EmployeesJobs" AccessorFolder="Always">
             <nodeDefinition DefName="com.redsamurai.model.views.EmployeesView"
                             Name="com.redsamurai.model.views.EmployeesView"/>

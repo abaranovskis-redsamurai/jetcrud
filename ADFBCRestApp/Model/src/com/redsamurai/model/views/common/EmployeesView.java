@@ -9,5 +9,7 @@ public interface EmployeesView extends ViewObject {
     String calculateEmployees(String firstName, String lastName);
 
     String login();
+
+    String testCall(String param1, String param2);
 }
 

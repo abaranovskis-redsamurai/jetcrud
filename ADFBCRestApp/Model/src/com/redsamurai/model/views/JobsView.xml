@@ -4,7 +4,7 @@
 <ViewObject
   xmlns="http://xmlns.oracle.com/bc4j"
   Name="JobsView"
-  Version="12.2.1.0.31"
+  Version="12.2.1.16.48"
   InheritPersonalization="merge"
   BindingStyle="OracleName"
   CustomQuery="true"
@@ -61,7 +61,7 @@ FROM JOBS Jobs]]></SQLQuery>
     ColumnType="NUMBER"
     AliasName="MIN_SALARY"
     Expression="MIN_SALARY"
-    SQLType="NUMERIC"/>
+    SQLType="INTEGER"/>
   <ViewAttribute
     Name="MaxSalary"
     IsUpdateable="false"
@@ -73,7 +73,7 @@ FROM JOBS Jobs]]></SQLQuery>
     ColumnType="NUMBER"
     AliasName="MAX_SALARY"
     Expression="MAX_SALARY"
-    SQLType="NUMERIC"/>
+    SQLType="INTEGER"/>
   <AttrArray Name="KeyAttributes">
     <Item Value="JobId"/>
   </AttrArray>

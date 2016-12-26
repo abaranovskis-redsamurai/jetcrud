@@ -4,7 +4,7 @@
 <ViewObject
   xmlns="http://xmlns.oracle.com/bc4j"
   Name="EmployeesView"
-  Version="12.2.1.20.47"
+  Version="12.2.1.16.48"
   InheritPersonalization="merge"
   SelectListFlags="1"
   FromListFlags="1"
@@ -302,6 +302,19 @@
       MethodName="login">
       <Return
         Name="_return_type_"
+        Type="java.lang.String"/>
+    </Method>
+    <Method
+      Name="testCall"
+      MethodName="testCall">
+      <Return
+        Name="_return_type_"
+        Type="java.lang.String"/>
+      <Parameter
+        Name="param1"
+        Type="java.lang.String"/>
+      <Parameter
+        Name="param2"
         Type="java.lang.String"/>
     </Method>
   </ClientInterface>
