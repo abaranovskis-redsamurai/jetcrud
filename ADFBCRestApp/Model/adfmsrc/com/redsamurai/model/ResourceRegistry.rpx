@@ -6,6 +6,7 @@
     <page path="v1_Jobs" usageId="v1_HrModule_JobsLovViewResources"/>
     <page path="v1_JobsChart" usageId="v1_HrModule_JobsViewResources"/>
     <page path="v1_EmployeesJobs" usageId="v1_HrModule_EmployeesViewResources"/>
+    <page path="v1_Departments" usageId="v1_HrModule_DepartmentsViewResources"/>
   </pageMap>
   <dataControlUsages>
     <BC4JDataControl id="HrModuleDataControl" Package="com.redsamurai.model.services"
@@ -20,5 +21,7 @@
     <page id="v1_HrModule_JobsLovViewResources"
           path="com.redsamurai.model.services.rest.v1.HrModule_JobsLovViewResources"/>
     <page id="v1_HrModule_JobsViewResources" path="com.redsamurai.model.services.rest.v1.HrModule_JobsViewResources"/>
+    <page id="v1_HrModule_DepartmentsViewResources"
+          path="com.redsamurai.model.services.rest.v1.HrModule_DepartmentsViewResources"/>
   </pageDefinitionUsages>
 </Application>

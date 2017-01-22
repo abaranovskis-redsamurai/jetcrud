@@ -39,14 +39,6 @@
     </DesignTime>
   </Containee>
   <Containee
-    Name="links"
-    PackageName="com.redsamurai.model.views.links"
-    ObjectType="JboPackage">
-    <DesignTime>
-      <Attr Name="_VL" Value="true"/>
-    </DesignTime>
-  </Containee>
-  <Containee
     Name="lovs"
     PackageName="com.redsamurai.model.views.lovs"
     ObjectType="JboPackage">

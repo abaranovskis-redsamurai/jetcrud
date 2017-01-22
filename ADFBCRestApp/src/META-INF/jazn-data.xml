@@ -74,6 +74,23 @@
                             </permission>
                         </permissions>
                     </grant>
+                    <grant>
+                        <grantee>
+                            <principals>
+                                <principal>
+                                    <class>oracle.security.jps.internal.core.principals.JpsAuthenticatedRoleImpl</class>
+                                    <name>authenticated-role</name>
+                                </principal>
+                            </principals>
+                        </grantee>
+                        <permissions>
+                            <permission>
+                                <class>oracle.adf.share.security.authorization.RestServicePermission</class>
+                                <name>Departments</name>
+                                <actions>get, create, update, delete, describe, invoke</actions>
+                            </permission>
+                        </permissions>
+                    </grant>
                 </jazn-policy>
             </application>
         </applications>
