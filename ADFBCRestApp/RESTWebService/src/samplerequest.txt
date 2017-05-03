@@ -1,0 +1,41 @@
+{
+    "parts": [
+        {
+            "id": "part1",
+            "path": "/1/Employees/100",
+            "operation": "update",
+            "payload": {
+                "Salary": 28700
+            }
+        },
+        {
+            "id": "part2",
+            "path": "/1/Employees/101",
+            "operation": "update",
+            "payload": {
+                "Salary": 19700
+            }
+        },
+    	{
+            "id": "part3",
+    	    "path": "/1/Employees",
+            "operation": "create",
+    	    "payload": {
+    		"EmployeeId": 207,
+                "FirstName": "John",
+                "LastName": "Scott",
+                "Email": "JSCOTT",
+                "HireDate": "2003-06-07",
+                "JobId": "AC_ACCOUNT"
+    	    }
+    	},
+        {
+            "id": "part4",
+            "path": "/1/Employees/206",
+            "operation": "delete",
+            "payload": {
+            }
+        }
+        
+    ]
+}
