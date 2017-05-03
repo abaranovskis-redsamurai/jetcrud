@@ -39,3 +39,24 @@
         
     ]
 }
+
+{
+    "parts": [
+        {
+            "id": "part1",
+            "path": "/1/Employees/",
+            "operation": "get",
+            "payload": {
+                
+            }
+        },
+        {
+            "id": "part2",
+            "path": "/1/Departments/",
+            "operation": "get",
+            "payload": {
+               
+            }
+        }
+    ]
+}
