@@ -10,11 +10,12 @@
             </button>  
         </div>
         <div class="oj-sm-float-end" id='buttons-container'>
-            <button id="buttonIcon2"  data-bind="click: saveCustomer, 
+            <button id="btnSave"  data-bind="click: saveCustomer, 
                                         ojComponent: {
                                             component:'ojButton', 
                                             icons: {start:'oj-fwk-icon oj-fwk-icon-checkmark'}, 
-                                            label: 'Save'
+                                            label: 'Save',
+                                            disabled: saveBtnBusyCheck
                                         }">
             </button>
         </div>  

@@ -40,7 +40,7 @@
                <name>JaznXmlProvider</name>
                <class>oracle.ods.virtualization.engine.chain.plugins.jazn.XmlPlugin</class>
                <initParams>
-                  <param name="xmllocation" value="/Users/andrejusbaranovskis/jdeveloper/mywork/blog/ADFBCRestApp/src/META-INF/jazn-data.xml"/>
+                  <param name="xmllocation" value="/Users/andrejusbaranovskis/jdeveloper/mywork/github/jetcrud/ADFBCRestApp/src/META-INF/jazn-data.xml"/>
                   <param name="realm" value="jazn.com"/>
                   <param name="pwdencoding" value="OBFUSCATE"/>
                   <param name="userbase" value="cn=users,dc=jazn.com"/>
